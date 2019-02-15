@@ -15,6 +15,7 @@ class App extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Conf-App'),
+          elevation: 0.0,
         ),
         body: TimeTableView(),
         drawer: AppDrawer(),
