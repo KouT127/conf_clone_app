@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:conf_clone_app/ui/pages/time_table.dart';
+import 'package:conf_clone_app/ui/pages/drawer.dart';
 
 void main() => runApp(App());
 
@@ -15,7 +16,8 @@ class App extends StatelessWidget {
         appBar: AppBar(
           title: Text('Conf-App'),
         ),
-        body: TimeTableList(),
+        body: TimeTableView(),
+        drawer: AppDrawer(),
       ),
     );
   }
