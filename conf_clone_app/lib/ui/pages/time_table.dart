@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:conf_clone_app/ui/components/tab.dart';
 
 class TimeTableView extends StatelessWidget {
   @override
@@ -7,6 +8,7 @@ class TimeTableView extends StatelessWidget {
     return Flex(
       direction: Axis.vertical,
       children: <Widget>[
+        AppTabs(),
         SizedBox(
           height: 25.0,
           width: double.infinity,
@@ -111,7 +113,7 @@ List<Widget> _buildTags(List<String> tags) {
 
 const PresentationList = [
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る',
       name: 'Name',
       content: '19:20',
       tags: [
@@ -120,7 +122,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: '19:30^',
       tags: [
@@ -129,7 +131,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -138,7 +140,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -147,7 +149,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -156,7 +158,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -165,7 +167,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: '19:20',
       tags: [
@@ -174,7 +176,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？Test 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作る',
       name: 'Name',
       content: '19:30^',
       tags: [
@@ -183,7 +185,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -192,7 +194,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -201,7 +203,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
@@ -210,7 +212,7 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'マルチモジュールなプロジェクトでテストはどう変わる？',
+      title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
       content: 'content',
       tags: [
