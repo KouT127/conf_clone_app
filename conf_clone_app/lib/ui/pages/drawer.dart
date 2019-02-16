@@ -22,7 +22,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             title: Text('Map'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/web');
             },
           ),
         ],
