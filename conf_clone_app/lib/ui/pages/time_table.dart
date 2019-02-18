@@ -28,12 +28,7 @@ class TimeTableView extends StatelessWidget {
   }
 }
 
-class TimeTableList extends StatefulWidget {
-  @override
-  _TimeTableListState createState() => _TimeTableListState();
-}
-
-class _TimeTableListState extends State<TimeTableList> {
+class TimeTableList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -67,6 +62,46 @@ class _TimeTableListState extends State<TimeTableList> {
   }
 }
 
+//
+//class TimeTableList extends StatefulWidget {
+//  @override
+//  _TimeTableListState createState() => _TimeTableListState();
+//}
+//
+//class _TimeTableListState extends State<TimeTableList> {
+//  @override
+//  Widget build(BuildContext context) {
+//    Size size = MediaQuery.of(context).size;
+//    double sectionWidth = size.width / 4.0;
+//
+//    return ListView.builder(
+//      itemBuilder: (context, index) {
+//        return StickyHeader(
+//            header: Container(
+//              height: 15,
+//              child: SizedBox(
+//                width: sectionWidth,
+//                height: double.infinity,
+//                child: Text(
+//                  PresentationList[index].getStringTime(),
+//                  textAlign: TextAlign.center,
+//                  style: TextStyle(
+//                    fontSize: 19.0,
+//                    color: Colors.black,
+//                  ),
+//                ),
+//              ),
+//            ),
+//            content: Container(
+//              margin: EdgeInsets.fromLTRB(sectionWidth, 10, 10, 10),
+//              child: TimeTableTile(PresentationList[index]),
+//            ));
+//      },
+//      itemCount: PresentationList.length,
+//    );
+//  }
+//}
+
 class TimeTableTile extends StatelessWidget {
   const TimeTableTile(
     this.presentation, {
@@ -93,69 +128,60 @@ class TimeTableTile extends StatelessWidget {
               fontSize: 15.0,
               color: Colors.black,
             )),
-        Wrap(spacing: 5.0, children: _buildTags(presentation.tags))
+        Wrap(spacing: 5.0,
+            children: presentation.tags.map((tag){
+          return Chip(label: Text(tag));
+        }).toList())
       ],
     ));
   }
 }
 
-List<Widget> _buildTags(List<String> tags) {
-  List<Widget> tagWidgets = [];
-  tags.forEach((tag) {
-    tagWidgets.add(Transform(
-        transform: Matrix4.identity()..scale(0.9),
-        child: Chip(
-          label: Text(tag),
-        )));
-  });
-  return tagWidgets;
-}
-
 const PresentationList = [
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る',
-      name: 'Name',
-      content: '19:20',
+      title: 'Flutterでアプリを作る',
+      name: 'TestUser1',
+      content: '10:00',
       tags: [
         '初心者',
-        'Flutter',
-        'Web',
+        'iOS',
       ]),
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る？',
-      name: 'Name',
-      content: '19:30^',
+      title: 'Androidでアプリを作る.Androidでアプリを作る.Androidでアプリを作る',
+      name: 'TestUser2',
+      content: '11:00',
       tags: [
-        '初心者',
-        'Flutter',
-        'Web',
+        'Android',
+        'Google',
+        '上級者向け',
+        'Test'
       ]),
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る？',
-      name: 'Name',
-      content: 'content',
+      title: 'iOSでアプリを作る',
+      name: 'TestUser3',
+      content: '12:00',
       tags: [
-        '初心者',
-        'Flutter',
-        'Web',
+        'Apple',
+        'iOS',
       ]),
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る？',
-      name: 'Name',
-      content: 'content',
+      title: 'クローンアプリをつくってみた！',
+      name: 'TestUser4',
+      content: '13:00',
       tags: [
         '初心者',
         'Flutter',
-        'Web',
       ]),
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る？',
-      name: 'Name',
-      content: 'content',
+      title: 'クロスプラットフォームアプリを作る！',
+      name: 'TestUser5',
+      content: '13:30',
       tags: [
-        '初心者',
+        'XPlatform',
         'Flutter',
-        'Web',
+        'Dart',
+        'Xamarin',
+        'C#'
       ]),
   Presentation(
       title: 'Test 某Kaigiクローンアプリケーションを作る？',
@@ -238,6 +264,6 @@ class Presentation {
   }
 
   String getStringTime() {
-    return '10:00';
+    return this.content;
   }
 }

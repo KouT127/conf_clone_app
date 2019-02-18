@@ -3,26 +3,16 @@ import 'package:flutter/material.dart';
 class AppTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 3,
-        child: Column(
-          children: <Widget>[
-            Container(
-              constraints: BoxConstraints.expand(height: 50),
-              color: Colors.blue,
-              child: TabBar(
-                tabs: _tabChildParameters(),
+    return TabBar(
+                tabs: tabChildParameters(),
                 indicatorColor: Colors.black45,
                 indicatorWeight: 3,
                 indicatorSize: TabBarIndicatorSize.label,
-              ),
-            ),
-          ],
-        ));
+              );
   }
 }
 
-List<Widget> _tabChildParameters() => [
+List<Tab> tabChildParameters() => [
       Tab(
         child: Container(
           alignment: Alignment.center,
@@ -34,7 +24,7 @@ List<Widget> _tabChildParameters() => [
         child: Container(
           alignment: Alignment.center,
           constraints: BoxConstraints.expand(),
-          child: Text("Day2"),
+          child: Text("Day3"),
         ),
       ),
       Tab(
