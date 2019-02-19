@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-import 'package:conf_clone_app/ui/components/tab.dart';
 
 class TimeTableView extends StatelessWidget {
   @override
@@ -8,7 +7,6 @@ class TimeTableView extends StatelessWidget {
     return Flex(
       direction: Axis.vertical,
       children: <Widget>[
-        AppTabs(),
         SizedBox(
           height: 25.0,
           width: double.infinity,
@@ -31,76 +29,24 @@ class TimeTableView extends StatelessWidget {
 class TimeTableList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double sectionWidth = size.width / 4.0;
 
     return ListView.builder(
       itemBuilder: (context, index) {
         return StickyHeader(
-            header: Container(
-              height: 15,
-              child: SizedBox(
-                width: sectionWidth,
-                height: double.infinity,
-                child: Text(
-                  PresentationList[index].getStringTime(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 19.0,
-                    color: Colors.black,
-                  ),
-                ),
+            header: Text(
+              PresentationList[index].getStringTime(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 19.0,
+                color: Colors.black,
               ),
             ),
-            content: Container(
-              margin: EdgeInsets.fromLTRB(sectionWidth, 10, 10, 10),
-              child: TimeTableTile(PresentationList[index]),
-            ));
+            content: TimeTableTile(PresentationList[index]));
       },
       itemCount: PresentationList.length,
     );
   }
 }
-
-//
-//class TimeTableList extends StatefulWidget {
-//  @override
-//  _TimeTableListState createState() => _TimeTableListState();
-//}
-//
-//class _TimeTableListState extends State<TimeTableList> {
-//  @override
-//  Widget build(BuildContext context) {
-//    Size size = MediaQuery.of(context).size;
-//    double sectionWidth = size.width / 4.0;
-//
-//    return ListView.builder(
-//      itemBuilder: (context, index) {
-//        return StickyHeader(
-//            header: Container(
-//              height: 15,
-//              child: SizedBox(
-//                width: sectionWidth,
-//                height: double.infinity,
-//                child: Text(
-//                  PresentationList[index].getStringTime(),
-//                  textAlign: TextAlign.center,
-//                  style: TextStyle(
-//                    fontSize: 19.0,
-//                    color: Colors.black,
-//                  ),
-//                ),
-//              ),
-//            ),
-//            content: Container(
-//              margin: EdgeInsets.fromLTRB(sectionWidth, 10, 10, 10),
-//              child: TimeTableTile(PresentationList[index]),
-//            ));
-//      },
-//      itemCount: PresentationList.length,
-//    );
-//  }
-//}
 
 class TimeTableTile extends StatelessWidget {
   const TimeTableTile(
@@ -112,28 +58,37 @@ class TimeTableTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          presentation.title,
-          textAlign: TextAlign.left,
-          style: TextStyle(
-              fontSize: 15.0, color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        Text(presentation.name,
+    Size size = MediaQuery.of(context).size;
+    double sectionWidth = size.width / 4.0;
+
+    return ListTile(
+      contentPadding: EdgeInsets.fromLTRB(sectionWidth, 0, 5, 5),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            presentation.title,
             textAlign: TextAlign.left,
             style: TextStyle(
-              fontSize: 15.0,
-              color: Colors.black,
-            )),
-        Wrap(spacing: 5.0,
-            children: presentation.tags.map((tag){
-          return Chip(label: Text(tag));
-        }).toList())
-      ],
-    ));
+                fontSize: 15.0, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          Text(presentation.name,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.black,
+              )),
+        ],
+      ),
+      subtitle: Wrap(
+          spacing: 5.0,
+          children: presentation.tags.map((tag) {
+            return Chip(label: Text(tag));
+          }).toList()),
+      onTap: (){
+        print('tap');
+      },
+    );
   }
 }
 
@@ -150,20 +105,11 @@ const PresentationList = [
       title: 'Androidでアプリを作る.Androidでアプリを作る.Androidでアプリを作る',
       name: 'TestUser2',
       content: '11:00',
-      tags: [
-        'Android',
-        'Google',
-        '上級者向け',
-        'Test'
-      ]),
-  Presentation(
-      title: 'iOSでアプリを作る',
-      name: 'TestUser3',
-      content: '12:00',
-      tags: [
-        'Apple',
-        'iOS',
-      ]),
+      tags: ['Android', 'Google', '上級者向け', 'Test']),
+  Presentation(title: 'iOSでアプリを作る', name: 'TestUser3', content: '12:00', tags: [
+    'Apple',
+    'iOS',
+  ]),
   Presentation(
       title: 'クローンアプリをつくってみた！',
       name: 'TestUser4',
@@ -176,13 +122,7 @@ const PresentationList = [
       title: 'クロスプラットフォームアプリを作る！',
       name: 'TestUser5',
       content: '13:30',
-      tags: [
-        'XPlatform',
-        'Flutter',
-        'Dart',
-        'Xamarin',
-        'C#'
-      ]),
+      tags: ['XPlatform', 'Flutter', 'Dart', 'Xamarin', 'C#']),
   Presentation(
       title: 'Test 某Kaigiクローンアプリケーションを作る？',
       name: 'Name',
@@ -202,7 +142,8 @@ const PresentationList = [
         'Web',
       ]),
   Presentation(
-      title: 'Test 某Kaigiクローンアプリケーションを作る？Test 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作る',
+      title:
+          'Test 某Kaigiクローンアプリケーションを作る？Test 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作るTest 某Kaigiクローンアプリケーションを作る',
       name: 'Name',
       content: '19:30^',
       tags: [
