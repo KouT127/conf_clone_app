@@ -86,7 +86,7 @@ class TimeTableTile extends StatelessWidget {
             return Chip(label: Text(tag));
           }).toList()),
       onTap: (){
-        print('tap');
+        Navigator.pushNamed(context, '/detail');
       },
     );
   }

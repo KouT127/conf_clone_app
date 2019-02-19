@@ -3,6 +3,7 @@ import 'package:conf_clone_app/ui/pages/time_table.dart';
 import 'package:conf_clone_app/ui/pages/drawer.dart';
 import 'package:conf_clone_app/ui/pages/webview.dart';
 import 'package:conf_clone_app/ui/components/tab.dart';
+import 'package:conf_clone_app/ui/pages/detail.dart';
 
 void main() => runApp(App());
 
@@ -14,7 +15,10 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {'/web': (context) => WebView()},
+        routes: {
+          '/web': (context) => WebView(),
+          '/detail': (context) => DetailView(),
+        },
         home: DefaultTabController(
           length: 3,
           child: Scaffold(
